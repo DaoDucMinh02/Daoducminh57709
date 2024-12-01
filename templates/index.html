@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Summarization Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script>
+        function validateForm() {
+            var text = document.getElementById('text').value.trim();
+            var wordCount = text.split(/\s+/).length;
+            if (text === '') {
+                alert('Error! Please enter the text!');
+                return false;
+            }
+            if (wordCount > 1000) {
+                alert('Please enter the text under 1000 words!');
+                return false;
+            }
+            return true;
+        }
+
+        function updateWordCount() {
+            var text = document.getElementById('text').value.trim();
+            var wordCount = text ? text.split(/\s+/).length : 0;
+            document.getElementById('wordCount').innerText = 'Word count: ' + wordCount;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Document Summarization Tool</h1>
+        <form action="/summarize" method="post" onsubmit="return validateForm()">
+            <label for="text">Enter text to summarize:</label><br>
+            <textarea id="text" name="text" rows="10" cols="80" oninput="updateWordCount()"></textarea><br>
+            <div id="wordCount">Word count: 0</div><br>
+            <input type="submit" value="Summarize">
+        </form>
+    </div>
+</body>
+</html>
