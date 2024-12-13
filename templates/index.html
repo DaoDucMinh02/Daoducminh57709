@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script>
         function validateForm() {
-            var text = document.getElementById('text').value.trim();
-            var wordCount = text.split(/\s+/).length;
+            const text = document.getElementById('text').value.trim();
+            const wordCount = text.split(/\s+/).length;
             if (text === '') {
                 alert('Error! Please enter the text!');
                 return false;
@@ -21,8 +21,8 @@
         }
 
         function updateWordCount() {
-            var text = document.getElementById('text').value.trim();
-            var wordCount = text ? text.split(/\s+/).length : 0;
+            const text = document.getElementById('text').value.trim();
+            const wordCount = text ? text.split(/\s+/).length : 0;
             document.getElementById('wordCount').innerText = 'Word count: ' + wordCount;
         }
     </script>
